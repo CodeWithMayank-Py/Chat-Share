@@ -1,7 +1,7 @@
 # Utility functions for authentication
 from passlib.hash import pbkdf2_sha256
 import secrets
-
+from cryptography.fernet import Fernet
 # Function to hash a password
 def hash_password(password):
     return pbkdf2_sha256.hash(password)
