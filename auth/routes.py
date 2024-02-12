@@ -6,6 +6,7 @@ from .utils import hash_password, verify_password
 import json
 # Import the Flask application instance from the __init__.py file
 from . import auth_app
+import string, random, os, json, jsonify
 
 # Path to the JSON file
 json_file = 'users.json'
@@ -95,3 +96,4 @@ def signin():
 
     # Render the signin page template (if the request method is not POST or authentication fails)
     return redirect(url_for('register'))
+
