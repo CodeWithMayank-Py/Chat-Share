@@ -21,10 +21,10 @@ def index():
 def register():
     return render_template('registration.html')
 
-@auth_app.route('/dashboard')
-def dashboard():
-    # You can add logic here to fetch data for the dashboard if needed
-    return render_template('dashboard.html')
+@auth_app.route('/chat_room')
+def chat_room():
+    # Your view logic here
+    return render_template('chat_room.html')
 
 
 # Function to load user data from JSON file
@@ -67,7 +67,7 @@ def signup():
         save_users(users_data)
 
         flash('Registration successful. Please log in.', 'success')
-        return redirect(url_for('dashboard'))  # Redirect to the dashboard page after successful registration
+        return redirect(url_for('chat_room'))  # Redirect to the dashboard page after successful registration
 
     # Render the signup page template (if the request method is not POST)
     return render_template('registration.html')
@@ -88,7 +88,7 @@ def signin():
             stored_password = users_data[email]['password']
             if verify_password(password, stored_password):
                 flash('Login successful.', 'success')
-                return redirect(url_for('dashboard'))  # Redirect to the dashboard page
+                return redirect(url_for('chat_room'))  # Redirect to the dashboard page
             else:
                 flash('Invalid email or password. Please try again.', 'error')
         else:
