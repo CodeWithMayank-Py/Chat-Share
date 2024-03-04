@@ -34,5 +34,21 @@
     "kalu@gmail.com": {
         "name": "kalu",
         "password": "$pbkdf2-sha256$29000$jVGqtZZyzvnfey8FIASAMA$E92khuHGah7gE0cPKzZDMob5ibqTH7bdJ/Mg8g2pvi4"
+    },
+    "ertf@gmail.com": {
+        "name": "asdf",
+        "password": "$pbkdf2-sha256$29000$gnAOYawVYozR.l/rPWes9Q$Y3nl71OkVFNkiZTzz/jIXmmTLTGy.wdmULvpW3yoPDY"
+    },
+    "aaa@gmail.com": {
+        "name": "Ghjb",
+        "password": "$pbkdf2-sha256$29000$ZmxtLcX4/1.rdU7JmXMOAQ$qNZGNOnLAZqeER2y9d2uUl90WOeEEVZBA6smYQzLsKE"
+    },
+    "shahsbsia@gmail.com": {
+        "name": "Vdhsjaks",
+        "password": "$pbkdf2-sha256$29000$7Z2TEkKIkbIWQojRmtP6vw$Zx/RVRuXCixJiwBAmIdfEVh3Q8i16F3hCCQ7Fk2O7qg"
+    },
+    "cc@gmail.com": {
+        "name": "Coders",
+        "password": "$pbkdf2-sha256$29000$4jxHqLXW2jtHCAFgbO095w$Hh5UmEGVLvNjyO.BO8D31H33ix1zDaFpZMFIuipUfAk"
     }
 }
