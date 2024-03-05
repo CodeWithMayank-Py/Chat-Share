@@ -16,6 +16,10 @@ json_file = 'users.json'
 def index():
     return render_template('index.html')
 
+# Define a handler function (required for Vercel deployment)
+def handler(event, context):
+    return app(event, context)
+
 # Define the route for the index page
 @auth_app.route('/register')
 def register():
