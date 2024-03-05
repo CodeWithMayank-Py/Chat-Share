@@ -14,7 +14,7 @@ json_file = 'users.json'
 def handler(event, context):
     return auth_app(event, context)
 
-@app_app.route('/favicon.ico')
+@auth_app.route('/favicon.ico')
 def favicon():
     # Return a 404 status code or an empty response to ignore favicon requests
     return '', 404
