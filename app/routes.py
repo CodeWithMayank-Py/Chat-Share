@@ -1,24 +1,24 @@
 # Authentication routes
 from flask import render_template, request, redirect, url_for, flash
-from .forms import RegistrationForm
 # from .storage import users
 from .utils import hash_password, verify_password
 import json
 # Import the Flask application instance from the __init__.py file
 from . import auth_app
-import string, random, os, json, jsonify
+import json
 
 # Path to the JSON file
 json_file = 'users.json'
+
+# Define a handler function (required for Vercel deployment)
+def handler(event, context):
+    return auth_app(event, context)
 
 # Define the route for the index page
 @auth_app.route('/')
 def index():
     return render_template('index.html')
 
-# Define a handler function (required for Vercel deployment)
-def handler(event, context):
-    return app(event, context)
 
 # Define the route for the index page
 @auth_app.route('/register')
