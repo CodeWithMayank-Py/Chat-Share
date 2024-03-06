@@ -2,13 +2,16 @@
     "version": 2,
     "builds": [
       {
-        "src": "run.py",                  
-        "use": "@vercel/python"           
+        "src": "./app.py",                  
+        "use": "@vercel/python",
+        "config":{"runtime":"python3.9"}       
       }
     ],
-    "routes": [
-      { "handle": "filesystem" },        
-      { "src": "/(.*)", "dest": "run.py" } 
+    "routes": [       
+      { 
+        "src": "/(.*)",
+       "dest": "/" 
+      } 
     ]
   }
   
