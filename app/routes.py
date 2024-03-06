@@ -4,7 +4,7 @@ from flask import render_template, request, redirect, url_for, flash
 from .utils import hash_password, verify_password
 import json
 # Import the Flask application instance from the __init__.py file
-from . import auth_app
+from . import app
 import json
 
 # Path to the JSON file
@@ -12,25 +12,25 @@ json_file = 'users.json'
 
 # Define a handler function (required for Vercel deployment)
 def handler(event, context):
-    return auth_app(event, context)
+    return app(event, context)
 
-@auth_app.route('/favicon.ico')
+@app.route('/favicon.ico')
 def favicon():
     # Return a 404 status code or an empty response to ignore favicon requests
     return '', 404
 
 # Define the route for the index page
-@auth_app.route('/')
+@app.route('/')
 def index():
     return render_template('index.html')
 
 
 # Define the route for the index page
-@auth_app.route('/register')
+@app.route('/register')
 def register():
     return render_template('registration.html')
 
-@auth_app.route('/dashboard')
+@app.route('/dashboard')
 def chat_room():
     # Your view logic here
     return render_template('dashboard.html')
@@ -51,7 +51,7 @@ def save_users(users_data):
 
 
 # Route for handling user registration
-@auth_app.route('/signup', methods=['POST'])
+@app.route('/signup', methods=['POST'])
 def signup():
     if request.method == 'POST':
         name = request.form['name']
@@ -82,7 +82,7 @@ def signup():
     return render_template('registration.html')
 
 # Route for handling user sign-in
-@auth_app.route('/signin', methods=['POST'])
+@app.route('/signin', methods=['POST'])
 def signin():
     if request.method == 'POST':
         email = request.form['email']
@@ -105,4 +105,3 @@ def signin():
 
     # Render the signin page template (if the request method is not POST or authentication fails)
     return redirect(url_for('register'))
-

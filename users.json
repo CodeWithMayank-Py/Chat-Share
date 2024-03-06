@@ -50,5 +50,9 @@
     "cc@gmail.com": {
         "name": "Coders",
         "password": "$pbkdf2-sha256$29000$4jxHqLXW2jtHCAFgbO095w$Hh5UmEGVLvNjyO.BO8D31H33ix1zDaFpZMFIuipUfAk"
+    },
+    "test@gmail.com": {
+        "name": "Test",
+        "password": "$pbkdf2-sha256$29000$M4bw/h8D4BwjJEToPSekNA$XcbNupqZDYih6XzoXSGHE5RjkFH5WVdtkrCNXu/UKWk"
     }
 }

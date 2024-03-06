@@ -1,6 +1,6 @@
 # run.py
 
-from app import auth_app as app
+from app import app
 
 
 if __name__ == "__main__":
