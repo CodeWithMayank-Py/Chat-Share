@@ -136,17 +136,19 @@ body {
 
 
 /* Bubble effect */
-.container {
-    position: absolute;
+.container .drop {
+    width: 350px;
+    height: 350px;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 20px 30px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin: 20px 30px;
-
+    background: rgba(255, 255, 255, 0.2); /* Adjust opacity to control the transparency */
+    backdrop-filter: blur(10px); /* Apply blur effect */
+    border-radius: 20px; /* Adjust border radius for rounded corners */
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); /* Add box shadow for depth */
+    backdrop-filter: blur(4px); /* Add blur effect to the background */
+    border: 1px solid rgba(255, 255, 255, 0.18); /* Add border for contrast */
 }
 
 .container .drop {
@@ -157,6 +159,7 @@ body {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+
     box-shadow: inset 20px 20px 20px rgba(0,0,0,0.05),
                 25px 35px 20px rgba(0,0,0,0.05),
                 25px 20px 20px rgba(0,0,0,0.05),

@@ -1,3 +1,4 @@
+<!-- registration.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,10 +13,10 @@
       <div class="user signinBx">
         <div class="imgBx"><img src="static/images/signin.jpeg" alt="Sign In Image" /></div>
         <div class="formBx">
-          <form action="/signin" method="post">
+          <form id="signinForm" onsubmit="signin(event)">
             <h2>Sign In</h2>
-            <input type="email" name="email" placeholder="Email" required />
-            <input type="password" name="password" placeholder="Password" required />
+            <input type="email" name="email" id="signinEmail" placeholder="Email" required />
+            <input type="password" name="password" id="signinPassword" placeholder="Password" required />
             <input type="submit" value="Login" />
             <p class="signup">
               Don't have an account ?
@@ -26,15 +27,15 @@
       </div>
       <div class="user signupBx">
         <div class="formBx">
-          <form action="/signup" method="post">
+          <form id="signupForm" onsubmit="signup(event)">
             <h2>Create an account</h2>
-            <input type="text" name="name" placeholder="Name" required />
-            <input type="email" name="email" placeholder="Email Address" required />
+            <input type="text" name="name" id="signupName" placeholder="Name" required />
+            <input type="email" name="email" id="signupEmail" placeholder="Email Address" required />
             <div class="password-container">
-              <input type="password" name="password" id="password" placeholder="Create Password" required />
-              <span class="toggle-password" onclick="togglePasswordVisibility('password')">🔒</span>
+              <input type="password" name="password" id="signupPassword" placeholder="Create Password" required />
+              <span class="toggle-password" onclick="togglePasswordVisibility('signupPassword')">🔒</span>
             </div>
-            <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required />
+            <input type="password" name="confirm_password" id="confirmPassword" placeholder="Confirm Password" required />
             <p id="passwordError" style="color: red; display: none;">Passwords do not match!</p>
             <input type="submit" value="Sign Up" />
             <p class="signup">
@@ -48,5 +49,36 @@
     </div>
   </section>
   <script src="/static/js/registration.js"></script>
+  <script>
+    function signup(event) {
+        event.preventDefault();
+        var name = document.getElementById('signupName').value;
+        var email = document.getElementById('signupEmail').value;
+        var password = document.getElementById('signupPassword').value;
+        // Save user data to local storage
+        var userData = {
+            name: name,
+            email: email,
+            password: password
+        };
+        localStorage.setItem('userData', JSON.stringify(userData));
+        // Redirect user to dashboard or another page
+        window.location.href = '/dashboard';
+    }
+
+    function signin(event) {
+        event.preventDefault();
+        var email = document.getElementById('signinEmail').value;
+        var password = document.getElementById('signinPassword').value;
+        // Save user data to local storage
+        var userData = {
+            email: email,
+            password: password
+        };
+        localStorage.setItem('userData', JSON.stringify(userData));
+        // Redirect user to dashboard or another page
+        window.location.href = '/dashboard';
+    }
+  </script>
 </body>
 </html>

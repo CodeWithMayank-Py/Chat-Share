@@ -1,46 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard</title>
-  <link rel="icon" href="/static/images/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="/static/css/dashboard.css">
-  <link href="https://fonts.googleapis.com/css?family=Exo:400,700" rel="stylesheet">
-</head>
-<body>
-  <div class="area">
-    <div class="circles">
-      <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-      </ul>
+{% extends 'base.html' %}
+{% block content %}
+<script>
+  function capitalize() {
+    var codeInput = document.getElementById("room-code");
+    codeInput.value = codeInput.value.toUpperCase();
+  }
+</script>
+<div id="form-ui">
+  <form method="post" id="form">
+    <div id="form-body">
+      <div id="welcome-lines">
+        <div id="welcome-line-1">Chat Room</div>
+        <div id="welcome-line-2">Welcome!</div>
+      </div>
+      <div id="input-area">
+        <div class="form-inp">
+          <input placeholder="Enter Your Name" type="text" name="name" value="{{name}}" maxlength="8" autocomplete="off">
+        </div>
+        <div class="form-inp">
+          <input type="text" placeholder="Enter Room Code" name="code" id="room-code" onkeyup="capitalize()" maxlength="4" value="{{code}}" autocomplete="off" />
+        </div>
+      </div>
+      <div id="buttons">
+        <button id="join-room-btn" type="submit" name="join">Join Room</button>
+      </div>
+      <div class="separator">
+        <hr class="line">
+        <span>or</span>
+        <hr class="line">
+      </div>
+      <div id="buttons">
+        <button id="create-room-btn" type="submit" name="create">Create a Room</button>
+      </div>
     </div>
-    <div class="container">
-      <div class="drop" style="--clr:#db4ef4;">
-          <div class="content">
-            <h2><img src="/static/images/Plus.svg" alt="Create Room"></h2>
-              <p>Create a new chat room and start chatting with friends!</p>
-              <a href="#" id="startChattingBtn">Start Chatting</a>
-          </div>
-      </div>
-      <div class="drop" style="--clr:#3a9cf1;">
-          <div class="content">
-            <h2><img src="/static/images/Microphone.svg" alt="Join Room"></h2>
-              <p>Join an existing chat room and connect with others!</p>
-              <a href="#">Join Now</a>
-          </div>
-      </div>
-  </div>
-  </div>
-  <script src="/static/js/dashboard.js"></script>
-</body>
-</html>
+  </form>
+</div>
+{% if error %}
+<ul>
+  <li>{{error}}</li>
+</ul>
+{% endif %}
+{% endblock %}

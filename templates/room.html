@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- Header Part -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <!-- Logo -->
+        <a class="navbar-brand" href="#">
+            <img src="/static/images/chatshare.ico" alt="Logo" height="40">
+        </a>
+        <a class="navbar-brand" href="#">Chat Room Code: {{code}}</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-regular fa-bars"></i>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#"><i class="fas fa-phone mr-2"></i> Audio Call</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-video mr-2"></i> Video Call</a>
+                        <div class="dropdown-divider"></div>
+                        <a id="exit-room-btn" class="dropdown-item" href="#"><i class="fas fa-sharp fa-light fa-arrow-right-from-bracket mr-2"></i> Exit Room</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<!-- Body Part -->
+<div class="container mt-5 chat-container">
+    <div class="card">
+        <div class="card-body">
+            <div class="outgoing-message mb-3 text-right" id="messages">
+                <!-- Structure for displaying messages -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer Part -->
+<footer class="footer">
+    <div class="container">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Message.." name="message" id="message"
+                autocomplete="off">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="button" id="attachment-btn"><i
+                        class="fas fa-paperclip"></i></button>
+                <span class="button-divider"></span> <!-- Space divider -->
+                <button class="btn btn-primary" type="button" name="send" id="send-btn" onClick="sendMessage()"><i
+                        class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+        <!-- Hidden input file element -->
+        <input type="file" id="file-input" style="display: none;">
+    </div>
+</footer>
+
+<!-- Include Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Include Socket.IO -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"
+    integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA=="
+    crossorigin="anonymous"></script>
+<!-- Include Script JS -->
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+        var socketio = io();
+
+        const messagesContainer = document.getElementById("messages"); // Updated variable name
+
+        const createMessage = (name, msg, isSender) => {
+            let content = '';
+            if (msg.includes('has entered the room')) {
+                // Add a class for entering room messages
+                content = `
+            <div class="entered-room-message">
+                <span>Hi, ${name}! Welcome to our group!</span>
+            </div>
+        `;
+            } else if (msg.includes('has left the room')) {
+                // Add a class for leaving room messages
+                content = `
+            <div class="left-room-message">
+                <span>Goodbye, ${name}! We'll miss you!</span>
+            </div>
+        `;
+            } else {
+                // Add a class for regular chat messages
+                if (isSender) {
+                    // Add a class for sender's messages
+                    content = `
+                <div class="regular-message sender">
+                    <span>${msg}</span>
+                </div>
+            `;
+                } else {
+                    // Add a class for receiver's messages
+                    content = `
+                <div class="regular-message">
+                    <span><strong>${name}</strong>: ${msg}</span>
+                </div>
+            `;
+                }
+            }
+            messagesContainer.innerHTML += content;
+        };
+
+        socketio.on("message", (data) => {
+            createMessage(data.name, data.message, data.isSender);
+        });
+
+        const sendMessage = () => {
+            const message = document.getElementById("message");
+            if (message.value == "") return;
+            socketio.emit("message", { data: message.value });
+            message.value = "";
+        };
+
+        const messageInput = document.getElementById("message");
+        messageInput.addEventListener("keypress", function (event) {
+            // Check if the key pressed is the "Enter" key (key code 13)
+            if (event.keyCode === 13) {
+                // Call the sendMessage function
+                sendMessage();
+            }
+        });
+
+        // Get the attachment button
+        const attachmentBtn = document.getElementById('attachment-btn');
+        // Get the file input element
+        const fileInput = document.getElementById('file-input');
+
+        // Attach click event listener to the attachment button
+        attachmentBtn.addEventListener('click', function () {
+            // Trigger a click event on the file input element
+            fileInput.click();
+        });
+
+        // Handle file input change event
+        fileInput.addEventListener('change', function (event) {
+            const files = event.target.files;
+            // Handle uploaded files
+        });
+
+        // Function to handle the click event on the "Exit Room" button
+        document.getElementById('exit-room-btn').addEventListener('click', function (event) {
+            // Redirect to index.html
+            window.location.href = '/';
+        });
+    });
+</script>
+{% endblock %}

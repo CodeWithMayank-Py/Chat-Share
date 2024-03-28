@@ -1,0 +1,405 @@
+/* -------------------------------------------------------------------------------------- */
+
+/* home.html File CSS CODE */
+#form-ui {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: #161616;
+  /* Dark background color */
+}
+
+#form {
+  width: 300px;
+  padding: 25px;
+  background-color: #161616;
+  /* Dark background color */
+  box-shadow: 0px 15px 60px #ff0000;
+  /* Shadow effect */
+  outline: 1px solid #00FF7F;
+  border-radius: 10px;
+}
+
+#form-body {
+  width: 100%;
+}
+
+#welcome-lines {
+  text-align: center;
+  line-height: 1;
+}
+
+#welcome-line-1 {
+  color: #00FF7F;
+  /* Green color */
+  font-weight: 600;
+  font-size: 40px;
+}
+
+#welcome-line-2 {
+  color: #ffffff;
+  /* White color */
+  font-size: 18px;
+  margin-top: 17px;
+}
+
+#input-area {
+  margin-top: 40px;
+}
+
+.form-inp {
+  padding: 11px 25px;
+  background: transparent;
+  border: 1px solid #e3e3e3;
+  line-height: 1;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.form-inp:last-child {
+  margin-bottom: 0;
+  /* Remove margin bottom for the last input */
+}
+
+.form-inp:focus {
+  border: 1px solid #00FF7F;
+  /* Green border color on focus */
+}
+
+.form-inp input {
+  width: 100%;
+  background: none;
+  font-size: 13.4px;
+  color: #00FF7F;
+  /* Green text color */
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.form-inp input:focus {
+  outline: none;
+}
+
+#buttons {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#create-room-btn,
+#join-room-btn {
+  width: 100%;
+  /* Set button width to 100% */
+  color: #00FF7F;
+  /* Green color */
+  background-color: transparent;
+  font-weight: 600;
+  font-size: 14px;
+  margin: 0;
+  padding: 14px 13px 12px 13px;
+  border: 0;
+  outline: 1px solid #00FF7F;
+  /* Green outline */
+  border-radius: 8px;
+  line-height: 1;
+  cursor: pointer;
+  transition: all ease-in-out .3s;
+}
+
+#create-room-btn:hover,
+#join-room-btn:hover {
+  background-color: #00FF7F;
+  /* Green background color on hover */
+  color: #161616;
+  /* Dark text color on hover */
+}
+
+#or-divider {
+  text-align: center;
+  margin-top: 20px;
+  color: #ffffff;
+  /* White color */
+}
+
+.separator {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  color: #8B8E98;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.separator .line {
+  display: block;
+  width: 100%;
+  height: 1px;
+  border: 0;
+  background-color: #e8e8e8;
+}
+
+.cube {
+  height: 80px;
+  width: 80px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cube_item {
+  height: 40px;
+  width: 40px;
+  border-radius: 10px;
+  transition: all 0.2s ease-in;
+}
+
+.cube_x {
+  background-color: blueviolet;
+  animation: animateLoaders 1s infinite;
+}
+
+.cube_y {
+  background-color: aqua;
+  animation: animateLoaders 1s 0.5s infinite;
+}
+
+@keyframes animateLoaders {
+  0% {
+      transform: scale(0.8);
+  }
+
+  50% {
+      transform: scale(1.2);
+  }
+
+  100% {
+      transform: scale(0.8);
+  }
+}
+
+#loading-overlay {
+  z-index: 9999;
+  /* Ensure it's above other content */
+  background: rgba(255, 255, 255, 0.8);
+  /* Semi-transparent background */
+}
+
+/* -------------------------------------------------------------------------------------- */
+
+/* Custom CSS for header styling */
+.navbar {
+  min-height: 80px;
+  background-image: radial-gradient(circle at 73% 11%, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.02) 3%, transparent 3%, transparent 100%), radial-gradient(circle at 48% 73%, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.02) 3%, transparent 3%, transparent 100%), radial-gradient(circle at 99% 95%, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.03) 3%, transparent 3%, transparent 100%), radial-gradient(circle at 7% 76%, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.02) 3%, transparent 3%, transparent 100%), radial-gradient(circle at 56% 95%, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.03) 7%, transparent 7%, transparent 100%), radial-gradient(circle at 80% 39%, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.03) 7%, transparent 7%, transparent 100%), radial-gradient(circle at 17% 72%, rgba(255, 255, 255, 0.01) 0%, rgba(255, 255, 255, 0.01) 7%, transparent 7%, transparent 100%), radial-gradient(circle at 68% 73%, rgba(255, 255, 255, 0.01) 0%, rgba(255, 255, 255, 0.01) 7%, transparent 7%, transparent 100%), radial-gradient(circle at 71% 40%, rgba(255, 255, 255, 0.01) 0%, rgba(255, 255, 255, 0.01) 7%, transparent 7%, transparent 100%), radial-gradient(circle at 28% 50%, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.03) 7%, transparent 7%, transparent 100%), radial-gradient(circle at 0% 27%, rgba(255, 255, 255, 0.01) 0%, rgba(255, 255, 255, 0.01) 7%, transparent 7%, transparent 100%), radial-gradient(circle at 7% 45%, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.02) 7%, transparent 7%, transparent 100%), radial-gradient(circle at 34% 64%, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.02) 7%, transparent 7%, transparent 100%), radial-gradient(circle at 80% 24%, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.03) 5%, transparent 5%, transparent 100%), radial-gradient(circle at 15% 59%, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.03) 5%, transparent 5%, transparent 100%), radial-gradient(circle at 62% 67%, rgba(255, 255, 255, 0.01) 0%, rgba(255, 255, 255, 0.01) 5%, transparent 5%, transparent 100%), radial-gradient(circle at 73% 71%, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.03) 5%, transparent 5%, transparent 100%), radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.02) 5%, transparent 5%, transparent 100%), radial-gradient(circle at 73% 62%, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.03) 5%, transparent 5%, transparent 100%), radial-gradient(circle at 43% 93%, rgba(255, 255, 255, 0.01) 0%, rgba(255, 255, 255, 0.01) 5%, transparent 5%, transparent 100%), radial-gradient(circle at 15% 64%, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.02) 5%, transparent 5%, transparent 100%), linear-gradient(240deg, rgb(135, 38, 38), rgb(56, 4, 65));
+}
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 20px;
+  color: #ffffff !important;
+}
+
+.nav-link {
+  font-weight: bold;
+  color: #ffffff !important;
+}
+
+
+/* Custom CSS for body styling */
+.card {
+  border: none;
+  box-shadow: 5px 0 10px -5px rgba(0, 0, 0, 0.1), -5px 0 10px -5px rgba(0, 0, 0, 0.1);
+  margin-top: -45px;
+}
+
+.card-body {
+  height: calc(100vh - 155px);
+  overflow-y: auto;
+  padding: 10px;
+}
+
+/* Customizing the scrollbar */
+::-webkit-scrollbar {
+  width: 2px;
+  /* Width of the scrollbar */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  /* Background color of the track */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  /* Color of the scrollbar handle */
+  border-radius: 2px;
+  /* Border radius of the handle */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  /* Color of the scrollbar handle on hover */
+}
+
+
+/* Custom CSS for footer styling */
+footer {
+  background-color: transparent;
+  border: none;
+  margin-top: 20px;
+  margin-bottom: 10px !important;
+  display: flex;
+}
+
+.input-group {
+  width: 70% !important;
+  /* Adjust the width of the input group */
+  display: flex;
+  justify-content: center;
+  /* Center the input field horizontally */
+  margin: 0 auto;
+}
+
+.form-control {
+  width: 100%;
+  /* Ensure the input field takes up the full width */
+  border-top: none !important;
+  /* No border on the top */
+  border-right: none !important;
+  /* No border on the right */
+  border-left: none !important;
+  /* No border on the left */
+  border-bottom: 1px solid #ccc;
+  /* Border only on the bottom */
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Custom CSS for attachment and send buttons */
+#attachment-btn,
+#send-btn {
+  background-color: transparent;
+  /* Transparent background */
+  border: none;
+  /* No border */
+}
+
+/* Gradient color for icons */
+#attachment-btn i,
+#send-btn i {
+  background: linear-gradient(to right, blue, red);
+  /* Gradient color */
+  background-clip: text;
+  /* Standard property for compatibility */
+  -webkit-background-clip: text;
+  /* Clip the text to apply gradient */
+  color: transparent;
+  /* Transparent text color */
+  font-size: 20px;
+}
+
+
+/* Styling for regular chat messages */
+.regular-message {
+  margin-bottom: 25px;
+  clear: both;
+  max-width: 50%;
+  margin-left: auto;
+}
+
+.regular-message span {
+  padding: 10px 15px;
+  /* Padding inside the speech bubble */
+  border-radius: 20px;
+  /* Rounded corners for the speech bubble */
+  background-color: #f2f2f2;
+  /* Background color of the speech bubble */
+  position: relative;
+  /* Position relative for positioning the tail */
+  display: inline-block;
+  max-width: 50%;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+
+/* Styling for sender's chat messages */
+
+.regular-message.sender span {
+  background-color: #4CAF50;
+  /* Green background color for sender's messages */
+  color: white;
+  /* White text color for sender's messages */
+}
+
+/* Styling for the tail of the speech bubble */
+.regular-message span:before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+/* Styling for the tail of sender's speech bubble */
+.regular-message.sender span:before {
+  border-width: 8px 10px 8px 0;
+  /* Adjust the size and shape of the tail */
+  border-color: transparent #4CAF50 transparent transparent;
+  /* Adjust the color of the tail */
+  left: -8px;
+  /* Position the tail to the left */
+  top: 50%;
+  /* Vertically center the tail */
+  transform: translateY(-50%);
+  /* Adjust the position of the tail */
+}
+
+/* Styling for the tail of receiver's speech bubble */
+.regular-message span:before {
+  border-width: 8px 0 8px 10px;
+  /* Adjust the size and shape of the tail */
+  border-color: transparent transparent transparent #f2f2f2;
+  /* Adjust the color of the tail */
+  right: -8px;
+  /* Position the tail to the right */
+  top: 50%;
+  /* Vertically center the tail */
+  transform: translateY(-50%);
+  /* Adjust the position of the tail */
+}
+
+/* Customizing style of how entering and leaving messages will be shown inside the chat area */
+.entered-room-message,
+.left-room-message {
+  border-radius: 10px;
+  background-color: #f2f2f2;
+  /* Light gray background color */
+  padding: 10px;
+  width: 50%;
+  margin: 0 auto;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.entered-room-message span,
+.left-room-message span {
+  font-style: italic;
+  color: #888;
+  /* Gray text color */
+  font-weight: bold;
+}
