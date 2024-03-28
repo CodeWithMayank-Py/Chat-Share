@@ -4,6 +4,7 @@ import random
 from string import ascii_uppercase
 
 app = Flask(__name__)
+app.config['SESSION_COOKIE_SECURE'] = True
 app.config["SECRET_KEY"] = "hjhjsdahhds"
 socketio = SocketIO(app)
 
