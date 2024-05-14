@@ -3,6 +3,7 @@ from flask_socketio import join_room, leave_room, send, SocketIO
 import random
 from string import ascii_uppercase
 
+
 app = Flask(__name__)
 app.config['SESSION_COOKIE_SECURE'] = True
 app.config["SECRET_KEY"] = "hjhjsdahhds"
@@ -25,6 +26,11 @@ def generate_unique_code(length):
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/register')
+def register():
+    return render_template('registration.html')
+
 
 @app.route("/home", methods=["POST", "GET"])
 def home():
